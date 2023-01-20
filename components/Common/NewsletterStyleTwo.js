@@ -31,7 +31,7 @@ const NewsletterStyleTwo = () => {
     const handleChange = e => {
         const { name, value } = e.target;
         setContact(prevState => ({ ...prevState, [name]: value }));
-        console.log("Line20",contact)
+        //console.log("Line20",contact)
     }
 
     const onSubmit = async e => {     
@@ -41,7 +41,7 @@ const NewsletterStyleTwo = () => {
             const payload = { sub_email };
             axios.post(url, payload);
             console.log("Line47",url);
-           // setContact(INITIAL_STATE);
+            setContact(INITIAL_STATE);
            // alertContent();
         } catch (error) {
             console.log(error)
@@ -64,7 +64,7 @@ const NewsletterStyleTwo = () => {
 
                             <form className="newsletter-form"  onSubmit={handleSubmit(onSubmit)}>                             
                                 <input type="email" name="sub_email" className="input-newsletter" placeholder="Enter your business email here"
-                                 value={contact.sub_email}  onChange={handleChange} />
+                                 value={contact.sub_email}  ref={register({ required: true })}  onChange={handleChange} />
                                 <button type="submit">Subscribe</button>
                             </form>
                             
