@@ -33,17 +33,18 @@ const ContactForm = () => {
     const handleChange = e => {
         const { name, value } = e.target;
         setContact(prevState => ({ ...prevState, [name]: value }));
-        console.log(contact)
+        //console.log("Line36",contact)
     }
 
     const onSubmit = async e => {
         // e.preventDefault();
         try {
             const url = `${baseUrl}/api/contact`;
+            //const url='https://cloudpikr.com/workscripts/endpoints/mailer.php'
             const { name, email, number, subject, text } = contact;
             const payload = { name, email, number, subject, text };
-            await axios.post(url, payload);
-            console.log(url);
+            axios.post(url, payload);
+            console.log("Line47",url);
             setContact(INITIAL_STATE);
             alertContent();
         } catch (error) {
